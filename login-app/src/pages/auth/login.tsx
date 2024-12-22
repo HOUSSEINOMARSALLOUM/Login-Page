@@ -7,7 +7,6 @@ import {
   FaEnvelope,
   FaLock,
 } from "react-icons/fa";
-import Image from "next/image";
 
 export default function Login() {
   const router = useRouter();
@@ -253,7 +252,7 @@ export default function Login() {
           </form>
 
           <p className="mt-6 text-center text-sm text-gray-600">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <a href="#" className="text-indigo-600 hover:text-indigo-500">
               Register
             </a>

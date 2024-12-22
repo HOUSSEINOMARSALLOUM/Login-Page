@@ -6,7 +6,7 @@ export default function Index() {
 
   useEffect(() => {
     router.push("/auth/login");
-  }, []);
+  }, [router]); // Add router to dependency array
 
   return null;
 }

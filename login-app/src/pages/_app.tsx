@@ -1,17 +1,17 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem('auth_token')
-    if (token && router.pathname === '/auth/login') {
-      router.push('/home')
+    const token = localStorage.getItem("auth_token");
+    if (token && router.pathname === "/auth/login") {
+      router.push("/home");
     }
-  }, [router.pathname])
+  }, [router, router.pathname]); // Add dependencies
 
-  return <Component {...pageProps} />
+  return <Component {...pageProps} />;
 }

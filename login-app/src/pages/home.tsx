@@ -1,13 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { FaFlag, FaCode, FaCircle, FaEllipsisH } from "react-icons/fa";
-
-interface UserData {
-  username: string;
-  email: string;
-  image?: string;
-}
 
 export default function Home() {
   const router = useRouter();
@@ -23,15 +17,13 @@ export default function Home() {
         setUserData(JSON.parse(storedUserData));
       }
     }
-  }, []);
+  }, [router]);
 
   const handleLogout = () => {
     localStorage.removeItem("auth_token");
     localStorage.removeItem("user_data");
     router.push("/auth/login");
   };
-
-  if (!userData) return null;
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -43,10 +35,12 @@ export default function Home() {
           </h1>
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
-              <img
+              <Image
                 src="/api/placeholder/40/40"
                 alt="User"
-                className="w-10 h-10 rounded-full"
+                width={40}
+                height={40}
+                className="rounded-full"
               />
               <div className="bg-purple-600 w-10 h-10 rounded-full flex items-center justify-center text-white">
                 S
@@ -61,10 +55,12 @@ export default function Home() {
         <div className="bg-white rounded-lg shadow-lg p-6">
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-4">
-              <img
+              <Image
                 src="/api/placeholder/48/48"
                 alt="User profile"
-                className="w-12 h-12 rounded-full"
+                width={48}
+                height={48}
+                className="rounded-full"
               />
               <div>
                 <h2 className="text-lg font-semibold">{userData.username}</h2>
