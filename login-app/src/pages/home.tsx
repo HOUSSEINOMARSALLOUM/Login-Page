@@ -1,7 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { FaFlag, FaCode, FaCircle, FaEllipsisH } from "react-icons/fa";
+
+interface UserData {
+  username: string;
+  email: string;
+}
 
 export default function Home() {
   const router = useRouter();
@@ -63,8 +68,8 @@ export default function Home() {
                 className="rounded-full"
               />
               <div>
-                <h2 className="text-lg font-semibold">{userData.username}</h2>
-                <p className="text-gray-600">{userData.email}</p>
+                <h2 className="text-lg font-semibold">{userData?.username}</h2>
+                <p className="text-gray-600">{userData?.email}</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
@@ -102,10 +107,12 @@ export default function Home() {
           {/* Additional User Profiles */}
           <div className="mt-8 flex justify-center">
             <div className="flex -space-x-2">
-              <img
-                src="/api/placeholder/40/40"
-                alt="User"
-                className="w-10 h-10 rounded-full border-2 border-white"
+              <Image
+                src="/api/placeholder/48/48"
+                alt="User profile"
+                width={48}
+                height={48}
+                className="rounded-full"
               />
               <div className="w-10 h-10 rounded-full border-2 border-white bg-yellow-500 flex items-center justify-center text-white">
                 M
